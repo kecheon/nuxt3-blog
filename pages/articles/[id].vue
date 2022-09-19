@@ -93,7 +93,7 @@ const { root, hasComment } = useComment(tabUrl);
         </client-only>
         <div class="more-info flex">
           <div class="tag flex">
-            <span>标签:</span>
+            <span>{{ $t('标签') }}:</span>
             <the-tag
               v-for="tag in item.tags"
               :key="tag"
@@ -103,7 +103,7 @@ const { root, hasComment } = useComment(tabUrl);
             </the-tag>
           </div>
           <span class="time">
-            更新于:
+            {{ $t('更新于') }}:
             <span>{{ modifyTime }}</span>
           </span>
         </div>
