@@ -68,7 +68,7 @@ const { root, hasComment } = useComment(tabUrl);
         </div>
       </client-only>
       <span class="modify">
-        更新于：
+        {{ $t('更新于') }}：
         <time>{{ modifyTime }}</time>
       </span>
     </div>

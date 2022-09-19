@@ -5,7 +5,7 @@ export default {
   githubRepo: "nuxt3-blog", // 勿修改
   githubBranch: "main", // 勿修改
   domain: "https://bitsbee.net", // rss域名
-  SEO_title: " - bitsbee the crypto bees",
+  SEO_title: " - Bitsbee the crypto bees",
   SEO_description: "crypto contents and bots",
   SEO_keywords: "crypto, bot, bitcoin",
 
