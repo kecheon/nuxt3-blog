@@ -69,14 +69,14 @@ function deleteSelect () {
 
 <template>
   <div class="manage-list-head flex">
-    <input v-model="searchValue" placeholder="输入文字进行搜索">
+    <input v-model="searchValue" :placeholder="$t('输入文字进行搜索')">
     <div v-if="slots.filter" class="filter flex">
       <slot name="filter" />
     </div>
     <del style="margin: 0 auto;" />
     <span class="status">{{ statusText }}</span>
     <common-button class="add-item" icon="add" @click="newItem">
-      新建
+     {{ $t('新建') }}
     </common-button>
     <common-button
       icon="delete"
@@ -85,7 +85,7 @@ function deleteSelect () {
       :loading="processing"
       @click="showConfirmModal = true"
     >
-      删除
+      {{ $t('删除') }}
     </common-button>
   </div>
   <ul class="manage-list-table">
@@ -99,16 +99,16 @@ function deleteSelect () {
         class="col"
         :class="['col-' + head, colPrefix + head]"
       >
-        {{ Translation[head] }}
+        {{ $t(Translation[head]) }}
       </div>
       <div class="col col-time">
-        日期
+        {{ $t('日期') }}
       </div>
       <div class="col col-lock">
-        加密
+        {{ $t('加密') }}
       </div>
       <div class="col col-check">
-        选择
+        {{ $t('选择') }}
       </div>
     </li>
     <common-loading v-if="pending" />
@@ -137,7 +137,7 @@ function deleteSelect () {
       <div class="col col-time">
         <span>{{ formatTime(item.time) }}</span>
       </div>
-      <div class="col col-lock" :title="item.encrypt ? '已加密' : null">
+      <div class="col col-lock" :title="item.encrypt ? $t('已加密') : null">
         <svg-icon v-if="item.encrypt" name="lock" />
       </div>
       <div class="col col-check">
@@ -154,13 +154,13 @@ function deleteSelect () {
     @confirm="deleteSelect"
   >
     <template #title>
-      确认删除
+      {{ $t('确认删除') }}
     </template>
     <template #body>
       <p>
-        已选择<b style="margin: 0 8px; font-size: 1.1em;">{{
+        {{ $t('已选择') }}<b style="margin: 0 8px; font-size: 1.1em;">{{
           selectedList.length
-        }}</b>项
+        }}</b>{{ $t('项') }}
       </p>
     </template>
   </common-modal>

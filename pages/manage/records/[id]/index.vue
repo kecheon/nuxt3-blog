@@ -26,7 +26,7 @@ const processImages = (_, _2, item: RecordItem) => {
     <manage-content-edit :process-with-content="processImages">
       <template #images="{ disabled, item }">
         <div class="input-images">
-          <span :class="{invalid: item.images.some(img => !img.src)}">{{ Translation.images }}
+          <span :class="{invalid: item.images.some(img => !img.src)}">{{ $t(Translation.images) }}
             <svg-icon name="images" />
           </span>
           <div class="flexc">

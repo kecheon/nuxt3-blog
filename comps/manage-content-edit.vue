@@ -240,13 +240,13 @@ onMounted(() => {
   <div class="manage-content-header flex">
     <div class="draft flex">
       <common-button theme="default" size="small" :disabled="pending || !hasDraft" @click="loadDraft">
-        加载草稿
+        {{ $t('加载草稿') }}
       </common-button>
       <common-button theme="default" size="small" class="load-draft" :disabled="pending" @click="dumpDraft">
-        保存草稿
+        {{ $t('保存草稿') }}
       </common-button>
       <common-button theme="default" size="small" :disabled="pending || !hasDraft" @click="delDraft">
-        删除草稿
+        {{ $t('删除草稿') }}
       </common-button>
     </div>
     <span class="status">{{ statusText }}</span>
@@ -256,7 +256,7 @@ onMounted(() => {
       :loading="processing && currentOperate === 'upload'"
       @click="doUpload"
     >
-      {{ isNew ? "发布" : "更新" }}
+      {{ isNew ? $t("发布") : $t("更新") }}
     </common-button>
     <common-button
       v-if="!isNew"
@@ -267,22 +267,22 @@ onMounted(() => {
       :loading="processing && currentOperate === 'delete'"
       @click="showDeleteModal = true"
     >
-      删除
+      {{ $t('删除') }}
     </common-button>
   </div>
-  <div class="manage-content-base-info flexc" data-title="基础信息">
+  <div class="manage-content-base-info flexc" :data-title="$t('基础信息')">
     <span v-if="isNew" class="new flex">
       <svg-icon name="new" />
     </span>
     <div ref="baseInfo" class="info detail">
       <div>
-        <span>加密
+        <span>{{ $t('加密') }}
           <svg-icon name="encrypt" />
         </span>
         <common-checkbox
           :checked="item.encrypt"
           :disabled="!decrypted || !blockDecrypted"
-          :title="!blockDecrypted && '请先解密blocks'"
+          :title="!blockDecrypted && $t('请先解密blocks')"
           @change="item.encrypt = $event"
         />
       </div>
@@ -290,7 +290,7 @@ onMounted(() => {
     </div>
     <common-loading v-if="listPending" />
   </div>
-  <div class="manage-content-md-info" data-title="内容">
+  <div class="manage-content-md-info" :data-title='$t("内容")'>
     <client-only>
       <md-editor
         v-model="inputMarkdown"
@@ -307,7 +307,7 @@ onMounted(() => {
     @confirm="doDelete"
   >
     <template #title>
-      确认删除?
+      {{ $t('确认删除') }}?
     </template>
   </common-modal>
   <common-modal
@@ -318,12 +318,12 @@ onMounted(() => {
     @confirm="showPreviewModal = false"
   >
     <template #title>
-      提交预览
+      {{ $t('提交预览') }}
     </template>
     <template #body>
-      <p>基础信息</p>
+      <p>{{ $t('基础信息') }}</p>
       <span ref="previewInfoEl" class="language-json info">{{ previewInfo }}</span>
-      <p>内容</p>
+      <p>{{ $t('内容') }}</p>
       <span ref="previewMdEl" class="language-markdown md">{{ previewContent }}</span>
     </template>
   </common-modal>

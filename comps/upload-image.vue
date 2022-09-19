@@ -129,14 +129,14 @@ onUnmounted(() => {
     @update:model-value="emit('update:modelValue', $event)"
   >
     <template #title>
-      上传图片
+      {{ $t('上传图片') }}
       <a style="font-size: 14px;" target="_blank" href="https://doc.sm.ms/">Support by sm.ms</a>
       <svg-icon name="question" />
     </template>
     <template #body>
       <div class="flexc">
         <div class="result flex">
-          <span>上传结果：</span>
+          <span>{{ $t('上传结果') }}：</span>
           <input ref="resultInput" v-model="resultUrl" readonly>
         </div>
         <label
@@ -151,14 +151,14 @@ onUnmounted(() => {
           <div v-if="dragIn" class="cover" />
           <div v-if="!img" class="flexc">
             <svg-icon name="add" />
-            <span>选择文件/拖拽图片到此</span>
+            <span>{{ $t('选择文件') }}/ {{ $t('拖拽图片到此') }}</span>
           </div>
           <img v-else class="s100" :src="imgUrl">
         </label>
         <div class="flex footer">
-          <input v-model="token" placeholder="请输入Authentication(API token)">
+          <input v-model="token" :placeholder="$t('请输入') + ' Authentication(API token)'">
           <common-button icon="upload" :loading="uploading" :disabled="!img || !token" @click="doUpload">
-            上传
+            {{ $t('上传') }}
           </common-button>
         </div>
       </div>

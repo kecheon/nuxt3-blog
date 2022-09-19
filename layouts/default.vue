@@ -48,7 +48,7 @@ const inputPwd = ref(encryptor.usePasswd.value);
         :class="{ active: activeRoute === item.url.substring(1) }"
         :to="item.url"
       >
-        {{ item.name }}
+        {{ $t('item.name.' + item.name) }}
         <span />
         <span />
         <span />

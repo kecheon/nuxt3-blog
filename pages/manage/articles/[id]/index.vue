@@ -69,7 +69,7 @@ const processContent = (md: string, html: HTMLElement, item: ArticleItem) => {
     <manage-content-edit :pre-process-item="preProcessItem" :process-with-content="processContent">
       <template #title="{ disabled, item }">
         <div>
-          <span :class="{ invalid: !item.title }">{{ Translation.title }}
+          <span :class="{ invalid: !item.title }">{{ $t(Translation.title) }}
             <svg-icon name="title" />
           </span>
           <input v-model="item.title" :disabled="disabled">
@@ -77,7 +77,7 @@ const processContent = (md: string, html: HTMLElement, item: ArticleItem) => {
       </template>
       <template #tags="{ disabled, item }">
         <div>
-          <span>{{ Translation.tags }}
+          <span>{{ $t(Translation.tags) }}
             <svg-icon name="tags" />
           </span>
           <div

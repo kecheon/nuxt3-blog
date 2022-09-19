@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
     <div class="header flex">
       <span>{{ statusText }}</span>
       <common-button icon="upload" :disabled="!canCommit" :loading="processing" @click="doUpload">
-        更新
+        {{ $t('更新') }}
       </common-button>
     </div>
     <div class="editor-container w100">

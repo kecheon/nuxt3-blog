@@ -109,7 +109,7 @@ const modalOk = () => {
         <ul>
           <li>
             <a @click="showUploadImage = true">
-              图片
+              {{ $t('图片') }}
             </a>
           </li>
           <li>
@@ -117,7 +117,7 @@ const modalOk = () => {
               to="/manage/config"
               :class="{ active: activeRoute.startsWith('/config') }"
             >
-              配置
+              {{ $t('配置') }}
             </nuxt-link>
           </li>
           <li v-for="tab in HeaderTabs" :key="tab.url">
@@ -125,7 +125,7 @@ const modalOk = () => {
               :to="'/manage' + tab.url"
               :class="{ active: activeRoute.startsWith(tab.url) }"
             >
-              <span>{{ tab.name }}</span>
+              <span>{{ $t(tab.name) }}</span>
             </nuxt-link>
           </li>
         </ul>
@@ -166,7 +166,7 @@ const modalOk = () => {
         <input v-model="inputToken" :disabled="isDev">
       </label>
       <label class="manage-input-pwd">
-        <b>密码
+        <b>{{ $t('密码') }}
           <svg-icon v-if="encryptor.passwdCorrect.value" name="correct" />
         </b>
         <input v-model="inputPwd">

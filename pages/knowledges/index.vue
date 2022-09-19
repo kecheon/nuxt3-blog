@@ -37,10 +37,10 @@ function goTo (tab?: KnowledgeTab) {
   <div class="knowledge-list">
     <nav class="flex">
       <span :class="{ active: isAll }" @click="goTo()">
-        全部<b>{{ getFilteredListLength() }}</b>
+        {{ $t('全部') }}<b>{{ getFilteredListLength() }}</b>
       </span>
       <span v-for="type_ in KnowledgeTabsList" :key="type_.key" :class="{ active: type_.key === currentTab }" @click="goTo(type_.key)">
-        {{ type_.name }}
+        {{ $t(type_.name) }}
         <b>{{ getFilteredListLength(type_.key) }}</b>
       </span>
     </nav>
@@ -54,7 +54,7 @@ function goTo (tab?: KnowledgeTab) {
       >
         <svg-icon :name="item.type" />
         <span>《<b>{{ item.title }}</b>》</span>
-        <time :title="formatTime(item.time)">{{ literalTime(item.time) }}</time>
+        <time :title="formatTime(item.time)">{{ literalTime(item.time).split(/\D+/)[0] }} {{ $t(literalTime(item.time).split(/\d+/)[1]) }}</time>
       </nuxt-link>
     </div>
   </div>
