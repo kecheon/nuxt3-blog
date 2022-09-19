@@ -65,8 +65,10 @@ const toggleTags = (tag: string) => {
             <b>{{ item.title }}</b>
             <div class="foot flex">
               <span :title="formatTime(item.time)">{{
-                literalTime(item.time)
-              }}</span>
+                literalTime(item.time).split(/\D+/)[0] ? literalTime(item.time).split(/\D+/)[0] : ''
+              }}
+              {{ literalTime(item.time).split(/\d+/)[1] ? $t(literalTime(item.time).split(/\d+/)[1]) : $t('今天') }}
+              </span>
               <b />
               <span>{{ item.len }}字</span>
             </div>

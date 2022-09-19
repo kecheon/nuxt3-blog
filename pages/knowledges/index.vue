@@ -54,7 +54,14 @@ function goTo (tab?: KnowledgeTab) {
       >
         <svg-icon :name="item.type" />
         <span>《<b>{{ item.title }}</b>》</span>
-        <time :title="formatTime(item.time)">{{ literalTime(item.time).split(/\D+/)[0] }} {{ $t(literalTime(item.time).split(/\d+/)[1]) }}</time>
+        <time :title="formatTime(item.time)">
+          <!-- {{ literalTime(item.time).split(/\D+/)[0] }} {{ $t(literalTime(item.time).split(/\d+/)[1]) }} -->
+          {{
+            literalTime(item.time).split(/\D+/)[0] ? literalTime(item.time).split(/\D+/)[0] : ''
+          }}
+          {{ literalTime(item.time).split(/\d+/)[1] ? $t(literalTime(item.time).split(/\d+/)[1]) : $t('今天') }}
+
+        </time>
       </nuxt-link>
     </div>
   </div>

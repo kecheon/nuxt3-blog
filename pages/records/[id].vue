@@ -32,7 +32,13 @@ const { root, hasComment } = useComment(tabUrl);
     <div class="text" :class="{'has-comment': hasComment}">
       <p :title="'作成于 ' + publishTime + '，更新于 ' + modifyTime">
         <svg-icon name="write" />
-        <time>{{ literalTime(item.time) }}</time>
+        <time>
+          <!-- {{ literalTime(item.time) }} -->
+          {{
+            literalTime(item.time).split(/\D+/)[0] ? literalTime(item.time).split(/\D+/)[0] : ''
+          }}
+          {{ literalTime(item.time).split(/\d+/)[1] ? $t(literalTime(item.time).split(/\d+/)[1]) : $t('今天') }}
+        </time>
       </p>
       <common-loading v-if="mdPending" />
       <client-only>
