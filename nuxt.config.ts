@@ -47,6 +47,7 @@ const isDev = process.env.NODE_ENV === "development";
 // const prefix = "monaco-editor/esm/vs";
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
+  modules: [ '@nuxt/content' ],
   telemetry: false,
   ssr: !isDev,
   app: {

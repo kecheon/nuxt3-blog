@@ -11,6 +11,8 @@ import { processEncryptDescrypt } from "~/utils/process-encrypt-descrypt";
 import { useManageContent } from "~/utils/manage/detail";
 import { encryptBlocksRegexp } from "~/utils/markdown";
 
+const Tui = defineAsyncComponent(() => import('~/components/Tui.client.vue'));
+
 const props = defineProps<{
   preProcessItem?:(_item: CommonItem, _list?: Ref<CommonItem[]> | {value: CommonItem[]}) => void;
   /** 更新之前处理item，附带markdown信息 */
@@ -54,6 +56,7 @@ const showPreviewModal = ref(false);
 
 let markdownRef = null;
 const getHtml = (ref: Ref) => {
+  console.log(ref)
   markdownRef = ref;
 };
 const inputMarkdown = ref<string>("");
@@ -170,6 +173,7 @@ const previewInfoEl = ref();
 const previewMdEl = ref();
 const setPreviewInfo = async () => {
   const info = await getUploadInfo();
+  console.log(info);
   if (!info) { return; }
   const { item, md } = info;
   previewInfo.value = JSON.stringify(item, null, 4);
@@ -183,6 +187,7 @@ const setPreviewInfo = async () => {
 };
 const doUpload = async () => {
   const info = await getUploadInfo();
+  console.log(info);
   if (!info) { return; }
   const { item: newItem, md } = info;
   currentOperate.value = "upload";
@@ -300,6 +305,11 @@ onMounted(() => {
   </div>
   <div class="manage-content-md-info" data-title="内容">
     <client-only>
+      <Tui :modelValue="inputMarkdown"
+        :get-html="getHtml"
+        :disabled="false"
+        :loading="false"
+      />
       <md-editor
         v-model="inputMarkdown"
         :get-html="getHtml"
